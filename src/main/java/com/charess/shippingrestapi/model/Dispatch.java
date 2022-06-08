@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name = "category")
+@Table(name = "dispatch")
 public class Dispatch extends Audit {
 
     @OneToOne
@@ -14,8 +14,8 @@ public class Dispatch extends Audit {
     private Colis colis;
 
     @OneToOne
-    @JoinColumn(name = "recipient_id")
-    private Person recipient;
+    @JoinColumn(name = "receiver_id")
+    private Person receiver;
 
     @OneToOne
     @JoinColumn(name = "sender_id")
@@ -84,12 +84,12 @@ public class Dispatch extends Audit {
         this.sender = sender;
     }
 
-    public Person getRecipient() {
-        return recipient;
+    public Person getReceiver() {
+        return receiver;
     }
 
-    public void setRecipient(Person recipient) {
-        this.recipient = recipient;
+    public void setReceiver(Person receiver) {
+        this.receiver = receiver;
     }
 
     public Colis getColis() {
