@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Items extends Name {
 
     @ManyToOne
-    @JoinColumn(name = "colis_id")
+    @JoinTable(name = "colis_items", joinColumns = @JoinColumn(name = "items_id"), inverseJoinColumns = @JoinColumn(name = "colis_id"))
     private Colis colis;
 
     @Column(name = "description")
