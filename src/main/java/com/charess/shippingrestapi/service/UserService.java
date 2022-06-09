@@ -10,7 +10,6 @@ import java.util.List;
 
 public interface UserService {
     User findByUsername(String username);
-    User getCurrentUser();
     Audit inject(Audit audit);
     List<User> getUsers();
     List<Profile> getProfiles();

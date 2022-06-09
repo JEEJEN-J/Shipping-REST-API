@@ -14,7 +14,7 @@ public class Audit extends ID implements Serializable {
     private LocalDateTime created;
 
     @ManyToOne
-    @JoinColumn(name = "creator", nullable = false)
+    @JoinColumn(name = "creator")
     private User creator;
 
     @Column(name = "edited")

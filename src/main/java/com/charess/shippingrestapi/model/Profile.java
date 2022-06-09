@@ -1,7 +1,6 @@
 package com.charess.shippingrestapi.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "profile")
-public class Profile extends ID implements Serializable, GrantedAuthority {
+public class Profile extends ID implements Serializable {
 
     @Column(name = "role", length = 60, unique = true, nullable = false)
     private String role;

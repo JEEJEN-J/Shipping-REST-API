@@ -1,7 +1,6 @@
 package com.charess.shippingrestapi.controller;
 
 import com.charess.shippingrestapi.model.Person;
-import com.charess.shippingrestapi.model.Profile;
 import com.charess.shippingrestapi.model.User;
 import com.charess.shippingrestapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,19 +27,25 @@ public class UserController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<User> getUsers() {
-        return userService.getUsers();
+    public ResponseEntity<?> getUsers() {
+        List<?> objects = userService.getUsers();
+        if (objects.toString().equals("[]"))
+            return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+        return ResponseEntity.ok(objects);
     }
 
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public List<Profile> getProfiles() {
-        return userService.getProfiles();
+    public ResponseEntity<?> getProfiles() {
+        List<?> objects = userService.getProfiles();
+        if (objects.size() == 0)
+            return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+        return ResponseEntity.ok(objects);
     }
 
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> register(@RequestBody User user) {
+    public ResponseEntity<?> create(@RequestBody User user) {
         System.out.println("USER : " + user);
         HttpHeaders textPlainHeaders = new HttpHeaders();
         textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
@@ -58,8 +62,8 @@ public class UserController {
                 }
             }
             return new ResponseEntity<>(userService.register(user, user.getId() == null), HttpStatus.OK);
-        } catch (UsernameNotFoundException ufe) {
-            return new ResponseEntity<>(ufe.getMessage(), HttpStatus.EXPECTATION_FAILED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
         }
     }
 

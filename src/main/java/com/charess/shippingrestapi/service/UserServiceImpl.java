@@ -12,10 +12,6 @@ import com.charess.shippingrestapi.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,17 +26,15 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private ProfileRepository profileRepository;
     private PersonRepository personRepository;
-    private PasswordEncoder passwordEncoder;
 
     private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, ProfileRepository profileRepository,
+    public UserServiceImpl(UserRepository userRepository, ProfileRepository profileRepository,
                            PersonRepository personRepository) {
         this.userRepository = userRepository;
         this.profileRepository = profileRepository;
-        this.passwordEncoder = passwordEncoder;
         this.personRepository = personRepository;
     }
 
@@ -48,43 +42,28 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
-    public User getCurrentUser() {
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        Authentication authentication = securityContext.getAuthentication();
 
-        User user = null;
-        if (authentication != null) {
-            if (authentication.getPrincipal() instanceof org.springframework.security.core.userdetails.User){
-                String username = ((org.springframework.security.core.userdetails.User) authentication.getPrincipal()).getUsername();
-                user = userRepository.findByUsername(username);
-            }
-        }
-        return user;
-    }
-
-    public Audit inject(Audit audit){
-        if(audit==null)
+    public Audit inject(Audit audit) {
+        if (audit == null)
             return audit;
-        if(audit.getId() == null){
-            audit.setCreator(getCurrentUser());
+        if (audit.getId() == null) {
             audit.setCreated(LocalDateTime.now());
         } else {
-            audit.setEditor(getCurrentUser());
             audit.setEdited(LocalDateTime.now());
         }
         return audit;
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userRepository.find();
     }
 
-    public List<Profile> getProfiles(){
+    public List<Profile> getProfiles() {
         return profileRepository.findAll().stream().filter(profile -> profile.getId() > 1).collect(Collectors.toList());
     }
 
-    public Person findByEmail(String email){
-        return email==null?null:personRepository.findByEmail(email);
+    public Person findByEmail(String email) {
+        return email == null ? null : personRepository.findByEmail(email);
     }
 
     public User register(User user, boolean encodePassword) {
@@ -99,34 +78,22 @@ public class UserServiceImpl implements UserService {
             }
             person = personRepository.save(person);
         }
-        if (encodePassword) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-        }
-        if (getCurrentUser() != null && user.getId() == null)
-            user.setStatus(Status.USER_PENDING.toString());
-        if (getCurrentUser() != null && user.getActivatedBy() == null && user.getStatus().equals(Status.USER_ACTIVE.toString())) {
-            user.setActivatedBy(getCurrentUser());
-            user.setActivatedDate(LocalDateTime.now());
-        }
-        if (user.getId() != null && getCurrentUser() != null && user.getStatus().equals(Status.USER_PENDING.toString())) {
-            user.setPassword(passwordEncoder.encode(user.getUsername()));
-        }
         user.setPerson(person);
         return userRepository.save(user);
     }
 
-    public void update(List<User> users){
-        for(User u: users){
+    public void update(List<User> users) {
+        for (User u : users) {
             boolean encodePassword = u.getStatus().equals(Status.USER_PENDING);
-            u.setPassword(encodePassword?u.getUsername():u.getPassword());
+            u.setPassword(encodePassword ? u.getUsername() : u.getPassword());
             register(u, encodePassword);
         }
     }
 
-    public Person getPerson(String key){
+    public Person getPerson(String key) {
         Person person = null;
-        if(key.trim().length() > 0){
-            if(key.split("@").length > 1)
+        if (key.trim().length() > 0) {
+            if (key.split("@").length > 1)
                 person = personRepository.findByEmail(key);
         }
         return person;

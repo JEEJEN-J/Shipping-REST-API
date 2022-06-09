@@ -2,7 +2,6 @@ package com.charess.shippingrestapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable, UserDetails {
+public class User implements Serializable {
 
     @Id
     private Integer id;
@@ -80,34 +79,6 @@ public class User implements Serializable, UserDetails {
         this.token = token;
     }
 
-    public Collection<Profile> getAuthorities() {
-        List<Profile> authorities = new ArrayList<>();
-        if (profile != null)
-            authorities.add(profile);
-        return authorities;
-    }
-
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    public boolean isAccountNonLocked() {
-        boolean isLocked = false;
-        if (Status.USER_ACTIVE.toString().equals(this.status) || Status.USER_PENDING.toString().equals(this.status))
-            isLocked = true;
-        return isLocked;
-    }
-
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    public boolean isEnabled() {
-        boolean bool = true;
-        if (getAuthorities().size() < 1)
-            bool = false;
-        return bool;
-    }
 
     public Integer getId() {
         return id;
