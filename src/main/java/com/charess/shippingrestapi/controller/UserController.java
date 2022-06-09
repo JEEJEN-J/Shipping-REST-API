@@ -42,33 +42,34 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> register(@RequestBody User user) {
+        System.out.println("USER : " + user);
         HttpHeaders textPlainHeaders = new HttpHeaders();
         textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
         try {
-            if(user == null) {
+            if (user == null) {
                 return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
             }
-            if(user.getId() == null){
-                if(userService.findByUsername(user.getUsername()) != null) {
+            if (user.getId() == null) {
+                if (userService.findByUsername(user.getUsername()) != null) {
                     return new ResponseEntity<>("username", textPlainHeaders, HttpStatus.CONFLICT);
                 }
-                if(userService.findByEmail(user.getPerson().getEmail()) != null){
+                if (userService.findByEmail(user.getPerson().getEmail()) != null) {
                     return new ResponseEntity<>("email", textPlainHeaders, HttpStatus.CONFLICT);
                 }
             }
-            return new ResponseEntity<>(userService.register(user, user.getId()==null), HttpStatus.OK);
-        } catch(UsernameNotFoundException ufe){
+            return new ResponseEntity<>(userService.register(user, user.getId() == null), HttpStatus.OK);
+        } catch (UsernameNotFoundException ufe) {
             return new ResponseEntity<>(ufe.getMessage(), HttpStatus.EXPECTATION_FAILED);
         }
     }
 
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public ResponseEntity<String> update(@RequestBody List<User> users) {
         try {
             userService.update(users);
             return new ResponseEntity<>("", HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
         }
     }

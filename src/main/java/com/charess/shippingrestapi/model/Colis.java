@@ -9,17 +9,7 @@ import java.util.List;
 public class Colis extends Name {
 
     @OneToMany
-    @JoinColumn(name = "items_id")
     private List<Items> items;
-
-    @Column(name = "basePrice", length = 15)
-    private double basePrice;
-
-    @Column(name = "totalPrice", length = 15)
-    private double totalPrice;
-
-    @Column(name = "weight", length = 15)
-    private double weight;
 
     @Column(name = "estimateSendDate")
     private LocalDate estimateSendDate;
@@ -30,10 +20,21 @@ public class Colis extends Name {
     @Column(name = "status", length = 50)
     private String status = Status.COLIS_COMPLETED.toString();
 
+    @OneToMany
+    private List<Images> images;
+
     @Transient
     private Integer quantity;
 
     public Colis() {
+    }
+
+    public List<Images> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Images> images) {
+        this.images = images;
     }
 
     public String getStatus() {
@@ -68,29 +69,6 @@ public class Colis extends Name {
         this.items = items;
     }
 
-    public double getBasePrice() {
-        return basePrice;
-    }
-
-    public void setBasePrice(double basePrice) {
-        this.basePrice = basePrice;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
 
     public Integer getQuantity() {
         this.items.forEach((item) -> {

@@ -4,6 +4,7 @@ public enum Status {
 
     USER_ACTIVE,
     USER_LOCKED,
+    USER_UNLOCKED,
     USER_PENDING,
     USER_INACTIVE,
 

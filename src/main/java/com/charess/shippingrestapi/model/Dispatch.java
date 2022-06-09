@@ -3,15 +3,15 @@ package com.charess.shippingrestapi.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
 @Table(name = "dispatch")
 public class Dispatch extends Audit {
 
-    @OneToOne
-    @JoinColumn(name = "colis_id")
-    private Colis colis;
+    @OneToMany
+    private List<Colis> colis;
 
     @OneToOne
     @JoinColumn(name = "receiver_id")
@@ -35,6 +35,32 @@ public class Dispatch extends Audit {
 
     @Column(name = "endDate")
     private LocalDateTime endDate;
+
+    @Column(name = "weight", length = 15)
+    private double weight;
+
+    @OneToOne
+    private Location location;
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Dispatch() {
+    }
+
 
     public LocalDate getEstimateSendDate() {
         return estimateSendDate;
@@ -92,13 +118,11 @@ public class Dispatch extends Audit {
         this.receiver = receiver;
     }
 
-    public Colis getColis() {
+    public List<Colis> getColis() {
         return colis;
     }
 
-    public void setColis(Colis colis) {
+    public void setColis(List<Colis> colis) {
         this.colis = colis;
     }
-
-
 }

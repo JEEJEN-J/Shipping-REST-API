@@ -1,0 +1,31 @@
+{
+  "id": 2,
+  "person": {
+    "id": 2,
+    "firstName": "JOSEPH",
+    "lastName": "Jeejen",
+    "gender": "M",
+    "phone": "+509 41 92 1021",
+    "email": "josephjeejen444@gmail.com",
+    "locationAddress": 1,
+    "textAddress": "string",
+    "fullname": "Jeejen JOSEPH",
+    "alias": "JJ"
+  },
+  "username": "jeejen",
+  "password": "jeejen96",
+  "status": "string",
+  "profile": 1,
+  "created": "2022-06-08T19:59:45.103Z",
+  "creator": 1,
+  "edited": "2022-06-08T19:59:45.103Z",
+  "editor": 1,
+  "token": "jjjjjjjjjjjjjjjj",
+  "activatedBy": 1,
+  "activatedDate": "2022-06-08T19:59:45.103Z",
+  "enabled": true,
+  "authorities": 1,
+  "accountNonExpired": true,
+  "accountNonLocked": true,
+  "credentialsNonExpired": true
+}

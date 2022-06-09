@@ -1,13 +1,15 @@
-insert into shippingdb.profile (id, name, page, role) VALUES (1,'Super Administrateur','admin/dashboard/main','super');
-insert into shippingdb.profile (id, name, page, role) VALUES (2,'Administrateur','configuration/account/page','admin');
-insert into shippingdb.profile (id, name, page, role) VALUES (3,'Agent','admin/dashboard/main','attendee');
-insert into shippingdb.profile (id, name, page, role) VALUES (4,'User','admin/dashboard/main','organiser');
-insert into shippingdb.profile (id, name, page, role) VALUES (5,'Livreur','partnership/request','partner');
+insert into shippingdb.profile (id, name, page, role) VALUES (1,'Super Administrateur','configuration/account/page','super');
+insert into shippingdb.profile (id, name, page, role) VALUES (2,'Administrateur','admin/dashboard/main','admin');
+insert into shippingdb.profile (id, name, page, role) VALUES (3,'Agent','admin/dashboard/main','Agent');
+insert into shippingdb.profile (id, name, page, role) VALUES (4,'User','admin/dashboard/main','User');
+insert into shippingdb.profile (id, name, page, role) VALUES (5,'Others','admin/dashboard/main','page');
 
-insert into shippingdb.users(id, username, password, status, locale, profile, created, creator)
-values(1, 'techgeeknext', '$2a$10$ixlPY3AAd4ty1l6E2IsQ9OFZi2ba9ZQE0bP7RFcGIWNhyFrrT3YUi', 'USER_ACTIVE', 'fr', 1, now(), null); -- password: Password
+insert into shippingdb.person(id, first_name, last_name, email, phone)
+     values (1, 'Super', 'Admin', 'isuper@gmail.com', '(509) 0000-0000');
+insert into shippingdb.users(id, username, password, status, profile, created, creator)
+     values (1, 'techgeeknext', '$2a$10$ixlPY3AAd4ty1l6E2IsQ9OFZi2ba9ZQE0bP7RFcGIWNhyFrrT3YUi', 'USER_ACTIVE', 1, now(), 1); -- password: Password
 
--- location
+-- location.json
 insert into shippingdb.location (id, name, parent, nature, created, creator) values (1,'Ouest', null, 'department', now(), 1);
 insert into shippingdb.location (id, name, parent, nature, created, creator) values (2,'Artibonite', null,'department', now(), 1);
 insert into shippingdb.location (id, name, parent, nature, created, creator) values (3,'Sud Est', null, 'department', now(), 1);
