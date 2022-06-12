@@ -31,9 +31,47 @@ public class UserController {
         List<?> objects = userService.getUsers();
         if (objects.toString().equals("[]"))
             return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+        objects.forEach((o) -> {
+            System.out.println(o);
+        });
         return ResponseEntity.ok(objects);
     }
 
+
+    @RequestMapping(value = "id/{ID}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserById(@PathVariable("ID") Integer id) {
+        HttpHeaders textPlainHeaders = new HttpHeaders();
+        textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
+        Object object = userService.findById(id);
+        try {
+            object.toString();
+            return ResponseEntity.ok(object);
+        } catch (javax.persistence.EntityNotFoundException ex) {
+            return new ResponseEntity<>("Search by ID[" + id + "] : " + HttpStatus.NOT_FOUND, textPlainHeaders, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "username/{username}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserByUsername(@PathVariable("username") String username) {
+        HttpHeaders textPlainHeaders = new HttpHeaders();
+        textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
+        Object object = userService.findByUsername(username);
+        if (object != null)
+            return ResponseEntity.ok(object);
+        else
+            return new ResponseEntity<>("Search by Username[" + username + "] : " + HttpStatus.NOT_FOUND, textPlainHeaders, HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "email/{email}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
+        HttpHeaders textPlainHeaders = new HttpHeaders();
+        textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
+        Object object = userService.findByEmail(email);
+        if (object != null)
+            return ResponseEntity.ok(object);
+        else
+            return new ResponseEntity<>("Search by Username[" + email + "] : " + HttpStatus.NOT_FOUND, textPlainHeaders, HttpStatus.NOT_FOUND);
+    }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ResponseEntity<?> getProfiles() {
@@ -46,7 +84,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody User user) {
-        System.out.println("USER : " + user);
         HttpHeaders textPlainHeaders = new HttpHeaders();
         textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
         try {
@@ -55,13 +92,13 @@ public class UserController {
             }
             if (user.getId() == null) {
                 if (userService.findByUsername(user.getUsername()) != null) {
-                    return new ResponseEntity<>("username", textPlainHeaders, HttpStatus.CONFLICT);
+                    return new ResponseEntity<>("Error username : " + HttpStatus.CONFLICT, textPlainHeaders, HttpStatus.CONFLICT);
                 }
                 if (userService.findByEmail(user.getPerson().getEmail()) != null) {
-                    return new ResponseEntity<>("email", textPlainHeaders, HttpStatus.CONFLICT);
+                    return new ResponseEntity<>("Error email : " + HttpStatus.CONFLICT, textPlainHeaders, HttpStatus.CONFLICT);
                 }
             }
-            return new ResponseEntity<>(userService.register(user, user.getId() == null), HttpStatus.OK);
+            return ResponseEntity.ok(userService.register(user));
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
         }
@@ -69,10 +106,9 @@ public class UserController {
 
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<String> update(@RequestBody List<User> users) {
+    public ResponseEntity<?> update(@RequestBody User user) {
         try {
-            userService.update(users);
-            return new ResponseEntity<>("", HttpStatus.OK);
+            return ResponseEntity.ok(userService.update(user));
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
         }

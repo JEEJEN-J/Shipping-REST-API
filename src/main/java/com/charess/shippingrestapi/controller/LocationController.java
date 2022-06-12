@@ -2,7 +2,6 @@ package com.charess.shippingrestapi.controller;
 
 
 import com.charess.shippingrestapi.model.Location;
-import com.charess.shippingrestapi.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

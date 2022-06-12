@@ -1,42 +1,30 @@
-{
-  "id": 0,
-  "person": {
-    "id": 0,
-    "firstName": "string",
-    "lastName": "string",
-    "gender": "string",
-    "phone": "string",
-    "email": "string",
-    "locationAddress": {
-      "id": 0,
-      "created": "2022-06-09T20:34:01.192Z",
-      "creator": "string",
-      "edited": "2022-06-09T20:34:01.192Z",
-      "editor": "string",
-      "name": "string",
-      "nature": "string",
-      "parent": "string",
-      "fullname": "string"
+[
+  {
+    "person": {
+      "firstName": "JOSEPH",
+      "lastName": "Jeejen",
+      "gender": "M",
+      "phone": "4192-1021",
+      "email": "josephjeejen444@gmail.com"
     },
-    "textAddress": "string",
-    "fullname": "string",
-    "alias": "string"
+    "username": "jeejen",
+    "password": "jeejen96",
+    "activatedDate": "2022-06-10T14:44:45.928Z"
   },
-  "username": "string",
-  "password": "string",
-  "status": "string",
-  "profile": {
-    "id": 0,
-    "role": "string",
-    "name": "string",
-    "page": "string",
-    "authority": "string"
-  },
-  "created": "2022-06-09T20:34:01.192Z",
-  "creator": "string",
-  "edited": "2022-06-09T20:34:01.192Z",
-  "editor": "string",
-  "token": "string",
-  "activatedBy": "string",
-  "activatedDate": "2022-06-09T20:34:01.192Z"
-}
+  {
+    "id": 3,
+    "person": {
+      "id": 3,
+      "firstName": "GEDEON",
+      "lastName": "Rose-Darlie",
+      "gender": "F",
+      "phone": "2222-2222",
+      "email": "X@gmail.com",
+      "textAddress": "Delmas 31"
+    },
+    "username": "shishie",
+    "password": "ruth201",
+    "created": "2022-06-10T19:50:33.973Z",
+    "activatedDate": "2022-06-10T19:50:33.973Z"
+  }
+]

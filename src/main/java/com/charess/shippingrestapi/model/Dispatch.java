@@ -15,11 +15,11 @@ public class Dispatch extends Audit {
 
     @OneToOne
     @JoinColumn(name = "receiver_id")
-    private Person receiver;
+    private User receiver;
 
     @OneToOne
     @JoinColumn(name = "sender_id")
-    private Person sender;
+    private User sender;
 
     @Column(name = "status", length = 50)
     private String status = Status.COLIS_COMPLETED.toString();
@@ -102,19 +102,19 @@ public class Dispatch extends Audit {
         this.status = status;
     }
 
-    public Person getSender() {
+    public User getSender() {
         return sender;
     }
 
-    public void setSender(Person sender) {
+    public void setSender(User sender) {
         this.sender = sender;
     }
 
-    public Person getReceiver() {
+    public User getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(Person receiver) {
+    public void setReceiver(User receiver) {
         this.receiver = receiver;
     }
 

@@ -23,11 +23,6 @@ public class Profile extends ID implements Serializable {
     public Profile() {
     }
 
-    @Autowired
-    public String getAuthority() {
-        return "ROLE_" + role.toUpperCase();
-    }
-
     public String getRole() {
         return role;
     }

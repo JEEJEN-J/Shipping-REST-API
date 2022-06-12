@@ -9,14 +9,16 @@ import com.charess.shippingrestapi.model.User;
 import com.charess.shippingrestapi.repository.PersonRepository;
 import com.charess.shippingrestapi.repository.ProfileRepository;
 import com.charess.shippingrestapi.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Transactional
@@ -26,8 +28,9 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private ProfileRepository profileRepository;
     private PersonRepository personRepository;
-
-    private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+    private JavaMailSender javaMailSender;
+    @Value("${spring.mail.username}")
+    private String fromEmail;
 
 
     @Autowired
@@ -36,6 +39,20 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
         this.profileRepository = profileRepository;
         this.personRepository = personRepository;
+    }
+
+
+    public boolean sendMail(String toEmail, String subject, String message) {
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+
+        mailMessage.setFrom(this.fromEmail);
+        mailMessage.setTo(toEmail);
+        mailMessage.setSubject(subject);
+        mailMessage.setText(message);
+
+//        this.javaMailSender.send(mailMessage);
+        return true;
     }
 
     public User findByUsername(String username) {
@@ -66,7 +83,11 @@ public class UserServiceImpl implements UserService {
         return email == null ? null : personRepository.findByEmail(email);
     }
 
-    public User register(User user, boolean encodePassword) {
+    public User findById(Integer id) {
+        return userRepository.getOne(id);
+    }
+
+    public Object register(User user) {
         if (user.getPassword() == null && user.getId() != null) {
             userRepository.findById(user.getId()).ifPresent(u -> user.setPassword(u.getPassword()));
         }
@@ -79,15 +100,14 @@ public class UserServiceImpl implements UserService {
             person = personRepository.save(person);
         }
         user.setPerson(person);
-        return userRepository.save(user);
+        System.out.println("Save...");
+        Object userSave = userRepository.save(user);
+        System.out.println("Usrer-save : " + userSave);
+        return userSave;
     }
 
-    public void update(List<User> users) {
-        for (User u : users) {
-            boolean encodePassword = u.getStatus().equals(Status.USER_PENDING);
-            u.setPassword(encodePassword ? u.getUsername() : u.getPassword());
-            register(u, encodePassword);
-        }
+    public Object update(User user) {
+        return register(user);
     }
 
     public Person getPerson(String key) {

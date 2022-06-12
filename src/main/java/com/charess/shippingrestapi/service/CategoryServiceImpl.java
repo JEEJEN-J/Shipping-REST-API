@@ -24,21 +24,21 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<Category> list(){
+    public List<Category> list() {
         return categoryRepository.findAll();
     }
 
-    public List<Category> search(String criteria){
-        return (criteria==null || criteria.trim().isEmpty())?new ArrayList<>():categoryRepository.search(criteria);
+    public List<Category> search(String criteria) {
+        return (criteria == null || criteria.trim().isEmpty()) ? new ArrayList<>() : categoryRepository.search(criteria);
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
         categoryRepository.deleteById(id);
     }
 
-    public Category save(Category place){
+    public Category save(Category place) {
         Audit audit = place;
         userService.inject(audit);
-        return (place==null || audit==null)?null:categoryRepository.save(place);
+        return (place == null || audit == null) ? null : categoryRepository.save(place);
     }
 }

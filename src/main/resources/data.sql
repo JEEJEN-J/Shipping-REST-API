@@ -6,8 +6,8 @@ insert into shippingdb.profile (id, name, page, role) VALUES (5,'Others','admin/
 
 insert into shippingdb.person(id, first_name, last_name, email, phone)
      values (1, 'Super', 'Admin', 'isuper@gmail.com', '(509) 0000-0000');
-insert into shippingdb.users(id, username, password, status, profile, created, creator)
-     values (1, 'techgeeknext', '$2a$10$ixlPY3AAd4ty1l6E2IsQ9OFZi2ba9ZQE0bP7RFcGIWNhyFrrT3YUi', 'USER_ACTIVE', 1, now(), 1); -- password: Password
+insert into shippingdb.users(id, username, password, status, profile, created)
+     values (1, 'techgeeknext', '$2a$10$ixlPY3AAd4ty1l6E2IsQ9OFZi2ba9ZQE0bP7RFcGIWNhyFrrT3YUi', 'USER_ACTIVE', 1, now()); -- password: Password
 
 -- location.json
 insert into shippingdb.location (id, name, parent, nature, created, creator) values (1,'Ouest', null, 'department', now(), 1);
