@@ -1,5 +1,7 @@
 package com.charess.shippingrestapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -28,10 +30,12 @@ public class Items extends Name {
     public Items() {
     }
 
+    @JsonIgnore
     public Colis getColis() {
         return colis;
     }
 
+    @JsonIgnore
     public void setColis(Colis colis) {
         this.colis = colis;
     }

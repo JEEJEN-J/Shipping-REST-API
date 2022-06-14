@@ -39,6 +39,17 @@ public class Dispatch extends Audit {
     @Column(name = "weight", length = 15)
     private double weight;
 
+    @Column(name = "price")
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @OneToOne
     private Location location;
 

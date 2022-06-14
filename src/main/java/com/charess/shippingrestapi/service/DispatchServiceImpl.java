@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service("dispatchService")
@@ -21,12 +22,14 @@ public class DispatchServiceImpl implements DispatchService {
 
     @Override
     public Dispatch create(Dispatch dispatch) {
-        return this.dispatchRepository.save(dispatch);
+        if (dispatch.getColis().size() > 0)
+            return this.dispatchRepository.save(dispatch);
+        return null;
     }
 
     @Override
-    public Dispatch getById(Integer id) {
-        return this.dispatchRepository.getOne(id);
+    public Optional<Dispatch> getById(Integer id) {
+        return this.dispatchRepository.findById(id);
     }
 
     @Override

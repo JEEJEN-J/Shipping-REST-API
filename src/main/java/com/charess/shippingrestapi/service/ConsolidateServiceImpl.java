@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service("consolidateService")
@@ -15,20 +16,27 @@ public class ConsolidateServiceImpl implements ConsolidateService {
     private ConsolidateRepository consolidateRepository;
 
     @Autowired
-    public ConsolidateServiceImpl(ConsolidateRepository consolidateRepository){
+    public ConsolidateServiceImpl(ConsolidateRepository consolidateRepository) {
         this.consolidateRepository = consolidateRepository;
     }
 
     @Override
     public Consolidate create(Consolidate consolidate) {
-        if(consolidate.getDispatches().size()>0)
-            this.consolidateRepository.save(consolidate);
+        if (consolidate.getDispatches().size() > 0) {
+            consolidate.getDispatches().forEach(dispatch -> {
+                if (dispatch.getId() == null) {
+                    consolidate.setWeight(consolidate.getWeight() + dispatch.getWeight());
+                    consolidate.setPrice(consolidate.getPrice() + dispatch.getPrice());
+                }
+            });
+            return this.consolidateRepository.save(consolidate);
+        }
         return null;
     }
 
     @Override
-    public Consolidate getById(Integer id) {
-        return this.consolidateRepository.getOne(id);
+    public Optional<Consolidate> getById(Integer id) {
+        return this.consolidateRepository.findById(id);
     }
 
     @Override
@@ -40,4 +48,5 @@ public class ConsolidateServiceImpl implements ConsolidateService {
     public Consolidate update(Consolidate consolidate) {
         return create(consolidate);
     }
+
 }

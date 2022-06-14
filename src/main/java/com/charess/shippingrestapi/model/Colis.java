@@ -1,7 +1,10 @@
 package com.charess.shippingrestapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,8 +26,8 @@ public class Colis extends Name {
     @OneToMany
     private List<Images> images;
 
-    @Transient
-    private Integer quantity;
+    @Column(name = "quantity", length = 15)
+    private Integer quantity = 0;
 
     public Colis() {
     }
@@ -71,11 +74,9 @@ public class Colis extends Name {
 
 
     public Integer getQuantity() {
-        this.items.forEach((item) -> {
-            this.quantity += item.getQuantity();
-        });
         return this.quantity;
     }
+
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;

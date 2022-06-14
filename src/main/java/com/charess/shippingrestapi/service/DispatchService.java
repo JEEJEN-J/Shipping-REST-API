@@ -1,14 +1,14 @@
 package com.charess.shippingrestapi.service;
 
 import com.charess.shippingrestapi.model.Dispatch;
-import com.charess.shippingrestapi.model.Location;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface DispatchService {
     Dispatch create(Dispatch dispatch);
 
-    Dispatch getById(Integer id);
+    Optional<Dispatch> getById(Integer id);
 
     List<Dispatch> findAll();
 

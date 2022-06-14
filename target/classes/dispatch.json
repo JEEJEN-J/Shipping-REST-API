@@ -1,0 +1,25 @@
+{
+  "created": "2022-06-14T14:07:03.392Z",
+  "edited": "2022-06-14T14:07:03.392Z",
+  "colis": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ],
+  "receiver": {
+    "id": 1
+  },
+  "sender": {
+    "id": 1
+  },
+  "status": "COLIS_IN_PROGRESS",
+  "estimateSendDate": "2022-06-14",
+  "estimateReceivedDate": "2022-06-14",
+  "startDate": "2022-06-14T14:07:03.392Z",
+  "endDate": "2022-06-14T14:07:03.392Z",
+  "weight": 180,
+  "price": 400
+}
