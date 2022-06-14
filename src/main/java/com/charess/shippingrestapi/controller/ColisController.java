@@ -1,8 +1,6 @@
 package com.charess.shippingrestapi.controller;
 
-import com.charess.shippingrestapi.identifier.GeneratedIdentifier;
 import com.charess.shippingrestapi.model.Colis;
-import com.charess.shippingrestapi.model.User;
 import com.charess.shippingrestapi.service.ColisService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +18,10 @@ import java.util.List;
 public class ColisController {
 
     private ColisService colisService;
-    private GeneratedIdentifier generatedIdentifier;
 
     @Autowired
-    public ColisController(ColisService colisService, GeneratedIdentifier generatedIdentifier) {
+    public ColisController(ColisService colisService) {
         this.colisService = colisService;
-        this.generatedIdentifier = generatedIdentifier;
     }
 
     @Operation(summary = "Créer un colis, vous devez spécifier les propriétés ci-dessous dans la demande. Si vous n'êtes pas connecté pour effectuer cette action, un 401 Unauthorized état est renvoyé.")
