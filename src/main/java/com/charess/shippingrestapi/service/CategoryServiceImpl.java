@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service("categoryService")
@@ -32,10 +33,6 @@ public class CategoryServiceImpl implements CategoryService {
         return (criteria == null || criteria.trim().isEmpty()) ? new ArrayList<>() : categoryRepository.search(criteria);
     }
 
-    public void delete(Integer id) {
-        categoryRepository.deleteById(id);
-    }
-
     public Category save(Category category) {
         Audit audit = category;
         userService.inject(audit);
@@ -46,4 +43,5 @@ public class CategoryServiceImpl implements CategoryService {
     public Category update(Category category) {
         return save(category);
     }
+
 }

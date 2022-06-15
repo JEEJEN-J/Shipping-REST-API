@@ -48,7 +48,6 @@ public class ConsolidateController {
         }
     }
 
-
     @Operation(summary = "")
     @RequestMapping(value = "/{ID}", method = RequestMethod.GET)
     public ResponseEntity<?> getConsolidateById(@PathVariable("ID") Integer id) {

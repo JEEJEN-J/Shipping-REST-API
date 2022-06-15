@@ -1,46 +1,34 @@
 {
-  "id": 0,
-  "created": "2022-06-15T17:20:54.848Z",
+  "created": "2022-06-15T19:07:33.206Z",
   "creator": {
-    "id": 0,
+    "id": 1,
     "person": {
-      "id": 0,
-      "firstName": "string",
-      "lastName": "string",
-      "gender": "string",
-      "phone": "string",
-      "email": "string",
-      "locationAddress": {
-        "id": 0,
-        "created": "2022-06-15T17:20:54.849Z",
-        "creator": "string",
-        "edited": "2022-06-15T17:20:54.849Z",
-        "editor": "string",
-        "name": "string",
-        "nature": "string",
-        "parent": "string",
-        "fullname": "string"
-      },
-      "textAddress": "string",
-      "fullname": "string",
-      "alias": "string"
+      "id": 1,
+      "firstName": "Super",
+      "lastName": "Admin",
+      "gender": null,
+      "phone": "(509) 0000-0000",
+      "email": "isuper@gmail.com",
+      "locationAddress": null,
+      "textAddress": null,
+      "fullname": "ADMIN, Super",
+      "alias": "AS"
     },
-    "username": "string",
-    "password": "string",
-    "status": "string",
+    "username": "techgeeknext",
+    "status": "USER_ACTIVE",
     "profile": {
-      "id": 0,
-      "role": "string",
-      "name": "string",
-      "page": "string"
+      "id": 1,
+      "role": "super",
+      "name": "Super Administrateur",
+      "page": "configuration/account/page"
     },
-    "created": "2022-06-15T17:20:54.849Z",
-    "creator": "string",
-    "edited": "2022-06-15T17:20:54.849Z",
-    "editor": "string",
-    "token": "string",
-    "activatedBy": "string",
-    "activatedDate": "2022-06-15T17:20:54.849Z"
+    "created": "2022-06-14T14:38:43",
+    "creator": null,
+    "edited": null,
+    "editor": null,
+    "token": null,
+    "activatedBy": null,
+    "activatedDate": null
   },
-  "name": "string"
+  "name": "Phone"
 }

@@ -2,11 +2,8 @@ package com.charess.shippingrestapi.controller;
 
 
 import com.charess.shippingrestapi.model.Category;
-import com.charess.shippingrestapi.model.Colis;
 import com.charess.shippingrestapi.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,7 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -29,18 +25,18 @@ public class CategoryController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Category> list() {
-        return categoryService.list();
+    public ResponseEntity<?> list() {
+        return ResponseEntity.ok(categoryService.list());
     }
 
     @RequestMapping(value = "/search/{criteria}", method = RequestMethod.GET)
-    public List<Category> search(@PathVariable(value = "criteria") String criteria) {
-        return categoryService.search(criteria);
+    public ResponseEntity<?> search(@PathVariable(value = "criteria") String criteria) {
+        return ResponseEntity.ok(categoryService.search(criteria));
     }
 
     @RequestMapping(value = "/{ID}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable("ID") Integer id) {
-        categoryService.delete(id);
+    public ResponseEntity<?> delete(@PathVariable("ID") Integer id) {
+        return ResponseEntity.ok(categoryService.delete(id));
     }
 
     @Operation(summary = "Créer un category, vous devez spécifier les propriétés ci-dessous dans la demande. Si vous n'êtes pas connecté pour effectuer cette action, un 401 Unauthorized état est renvoyé.")

@@ -11,8 +11,6 @@ public interface CategoryService {
 
     List<Category> search(String criteria);
 
-    void delete(Integer id);
-
     Category save(Category category);
 
     Category update(Category category);
