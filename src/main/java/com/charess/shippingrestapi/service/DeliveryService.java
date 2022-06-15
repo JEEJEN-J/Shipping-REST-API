@@ -6,11 +6,12 @@ import com.charess.shippingrestapi.model.User;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface DeliveryService {
     Delivery create(Delivery delivery);
 
-    Delivery getById(Integer id);
+    Optional<Delivery> getById(Integer id);
 
     Delivery getByReceiver(User user);
 
@@ -19,4 +20,6 @@ public interface DeliveryService {
     Delivery getByConsolidate(Consolidate consolidate);
 
     List<Delivery> getByDeliveryDate(LocalDate localDate);
+
+    List<Delivery> findAll();
 }

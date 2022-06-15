@@ -33,11 +33,11 @@ public class ConsolidateController {
         textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
         try {
             if (consolidate == null) {
-                return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Error consolidate can't null : ", HttpStatus.BAD_REQUEST);
             }
             if (consolidate.getId() == null) {
                 if (consolidate.getDispatches().size() == 0) {
-                    return new ResponseEntity<>("Error dispatch can't null : " + HttpStatus.CONFLICT, textPlainHeaders, HttpStatus.CONFLICT);
+                    return new ResponseEntity<>("Error consolidate exist : " + HttpStatus.CONFLICT, textPlainHeaders, HttpStatus.CONFLICT);
                 }
             }
             Object object = this.consolidateService.create(consolidate);
@@ -62,6 +62,16 @@ public class ConsolidateController {
     public ResponseEntity<?> getAllConsolidates() {
         List<?> objects = this.consolidateService.findAll();
         return ResponseEntity.ok(objects);
+    }
+
+    @Operation(summary = "Modifier un consolidate, vous devez spécifier les propriétés ci-dessous dans la demande. Si vous n'êtes pas connecté pour effectuer cette action, un 401 Unauthorized état est renvoyé.")
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@RequestBody Consolidate consolidate) {
+        try {
+            return ResponseEntity.ok(consolidateService.update(consolidate));
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
+        }
     }
 
 }

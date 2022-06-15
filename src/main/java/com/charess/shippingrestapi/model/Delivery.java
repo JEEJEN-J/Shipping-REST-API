@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "delivery")
-public class Delivery extends ID implements Serializable {
+public class Delivery extends ID {
 
     @OneToOne
     private Consolidate consolidate;

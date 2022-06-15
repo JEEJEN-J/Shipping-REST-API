@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @Transactional
@@ -25,19 +26,18 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public Delivery create(Delivery delivery) {
-        if (delivery.getReceiver() != null) {
-            if (delivery.getConsolidate() != null) {
-                if (delivery.getDeliveryMan() != null) {
-                    return this.deliveryRepository.save(delivery);
-                }
+        if (delivery.getConsolidate() != null) {
+            if (delivery.getDeliveryMan() != null) {
+                delivery.setReceiver(delivery.getConsolidate().getReceiver());
+                return this.deliveryRepository.save(delivery);
             }
         }
         return null;
     }
 
     @Override
-    public Delivery getById(Integer id) {
-        return this.deliveryRepository.getOne(id);
+    public Optional<Delivery> getById(Integer id) {
+        return this.deliveryRepository.findById(id);
     }
 
     @Override
@@ -58,6 +58,11 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public List<Delivery> getByDeliveryDate(LocalDate localDate) {
         return this.deliveryRepository.findAllByDeliveryDate(localDate);
+    }
+
+    @Override
+    public List<Delivery> findAll() {
+        return this.deliveryRepository.findAll();
     }
 
 }

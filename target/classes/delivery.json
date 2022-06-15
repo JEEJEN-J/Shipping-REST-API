@@ -1,0 +1,318 @@
+{
+  "consolidate": {
+    "id": 1,
+    "created": "2022-06-14T19:22:12",
+    "creator": {
+      "id": 1,
+      "person": {
+        "id": 1,
+        "firstName": "Super",
+        "lastName": "Admin",
+        "gender": null,
+        "phone": "(509) 0000-0000",
+        "email": "isuper@gmail.com",
+        "locationAddress": null,
+        "textAddress": null,
+        "fullname": "ADMIN, Super",
+        "alias": "AS"
+      },
+      "username": "techgeeknext",
+      "status": "USER_ACTIVE",
+      "profile": {
+        "id": 1,
+        "role": "super",
+        "name": "Super Administrateur",
+        "page": "configuration/account/page"
+      },
+      "created": "2022-06-14T14:38:43",
+      "creator": null,
+      "edited": null,
+      "editor": null,
+      "token": null,
+      "activatedBy": null,
+      "activatedDate": null
+    },
+    "edited": null,
+    "editor": null,
+    "dispatches": [
+      {
+        "id": 1,
+        "created": "2022-06-14T19:09:05",
+        "creator": {
+          "id": 1,
+          "person": {
+            "id": 1,
+            "firstName": "Super",
+            "lastName": "Admin",
+            "gender": null,
+            "phone": "(509) 0000-0000",
+            "email": "isuper@gmail.com",
+            "locationAddress": null,
+            "textAddress": null,
+            "fullname": "ADMIN, Super",
+            "alias": "AS"
+          },
+          "username": "techgeeknext",
+          "status": "USER_ACTIVE",
+          "profile": {
+            "id": 1,
+            "role": "super",
+            "name": "Super Administrateur",
+            "page": "configuration/account/page"
+          },
+          "created": "2022-06-14T14:38:43",
+          "creator": null,
+          "edited": null,
+          "editor": null,
+          "token": null,
+          "activatedBy": null,
+          "activatedDate": null
+        },
+        "edited": null,
+        "editor": null,
+        "colis": [
+          {
+            "id": 1,
+            "created": "2022-06-14T18:54:28",
+            "creator": {
+              "id": 1,
+              "person": {
+                "id": 1,
+                "firstName": "Super",
+                "lastName": "Admin",
+                "gender": null,
+                "phone": "(509) 0000-0000",
+                "email": "isuper@gmail.com",
+                "locationAddress": null,
+                "textAddress": null,
+                "fullname": "ADMIN, Super",
+                "alias": "AS"
+              },
+              "username": "techgeeknext",
+              "status": "USER_ACTIVE",
+              "profile": {
+                "id": 1,
+                "role": "super",
+                "name": "Super Administrateur",
+                "page": "configuration/account/page"
+              },
+              "created": "2022-06-14T14:38:43",
+              "creator": null,
+              "edited": null,
+              "editor": null,
+              "token": null,
+              "activatedBy": null,
+              "activatedDate": null
+            },
+            "edited": null,
+            "editor": null,
+            "name": "XPR-3545-T6555",
+            "items": [
+              {
+                "id": 1,
+                "created": "2022-06-14T18:54:28",
+                "creator": {
+                  "id": 1,
+                  "person": {
+                    "id": 1,
+                    "firstName": "Super",
+                    "lastName": "Admin",
+                    "gender": null,
+                    "phone": "(509) 0000-0000",
+                    "email": "isuper@gmail.com",
+                    "locationAddress": null,
+                    "textAddress": null,
+                    "fullname": "ADMIN, Super",
+                    "alias": "AS"
+                  },
+                  "username": "techgeeknext",
+                  "status": "USER_ACTIVE",
+                  "profile": {
+                    "id": 1,
+                    "role": "super",
+                    "name": "Super Administrateur",
+                    "page": "configuration/account/page"
+                  },
+                  "created": "2022-06-14T14:38:43",
+                  "creator": null,
+                  "edited": null,
+                  "editor": null,
+                  "token": null,
+                  "activatedBy": null,
+                  "activatedDate": null
+                },
+                "edited": null,
+                "editor": null,
+                "name": "string",
+                "description": "iPhone XR",
+                "weight": 10,
+                "basePrice": 15,
+                "totalPrice": 95,
+                "quantity": 10
+              }
+            ],
+            "estimateSendDate": "2022-06-13",
+            "estimateReceivedDate": "2022-06-13",
+            "status": "COLIS_PENDING",
+            "images": [
+              {
+                "id": 1,
+                "created": "2022-06-14T18:54:28",
+                "creator": {
+                  "id": 1,
+                  "person": {
+                    "id": 1,
+                    "firstName": "Super",
+                    "lastName": "Admin",
+                    "gender": null,
+                    "phone": "(509) 0000-0000",
+                    "email": "isuper@gmail.com",
+                    "locationAddress": null,
+                    "textAddress": null,
+                    "fullname": "ADMIN, Super",
+                    "alias": "AS"
+                  },
+                  "username": "techgeeknext",
+                  "status": "USER_ACTIVE",
+                  "profile": {
+                    "id": 1,
+                    "role": "super",
+                    "name": "Super Administrateur",
+                    "page": "configuration/account/page"
+                  },
+                  "created": "2022-06-14T14:38:43",
+                  "creator": null,
+                  "edited": null,
+                  "editor": null,
+                  "token": null,
+                  "activatedBy": null,
+                  "activatedDate": null
+                },
+                "edited": null,
+                "editor": null,
+                "name": "iPhonexr2.jpeg"
+              }
+            ],
+            "quantity": 10
+          }
+        ],
+        "receiver": {
+          "id": 2,
+          "person": {
+            "id": 2,
+            "firstName": "JOSEPH",
+            "lastName": "Jeejen",
+            "gender": "M",
+            "phone": "+509 41 92 1021",
+            "email": "string",
+            "locationAddress": null,
+            "textAddress": null,
+            "fullname": "JEEJEN, JOSEPH",
+            "alias": "JJ"
+          },
+          "username": "jeejen",
+          "status": "USER_ACTIVE",
+          "profile": null,
+          "created": "2022-06-14T18:41:27",
+          "creator": null,
+          "edited": "2022-06-14T18:41:27",
+          "editor": null,
+          "token": null,
+          "activatedBy": null,
+          "activatedDate": "2022-06-14T18:41:27"
+        },
+        "sender": {
+          "id": 1,
+          "person": {
+            "id": 1,
+            "firstName": "Super",
+            "lastName": "Admin",
+            "gender": null,
+            "phone": "(509) 0000-0000",
+            "email": "isuper@gmail.com",
+            "locationAddress": null,
+            "textAddress": null,
+            "fullname": "ADMIN, Super",
+            "alias": "AS"
+          },
+          "username": "techgeeknext",
+          "status": "USER_ACTIVE",
+          "profile": {
+            "id": 1,
+            "role": "super",
+            "name": "Super Administrateur",
+            "page": "configuration/account/page"
+          },
+          "created": "2022-06-14T14:38:43",
+          "creator": null,
+          "edited": null,
+          "editor": null,
+          "token": null,
+          "activatedBy": null,
+          "activatedDate": null
+        },
+        "status": "COLIS_VALIDATED",
+        "estimateSendDate": "2022-06-13",
+        "estimateReceivedDate": "2022-06-13",
+        "startDate": "2022-06-14T19:09:05",
+        "endDate": "2022-06-14T19:09:05",
+        "weight": 60,
+        "price": 40,
+        "location": null
+      }
+    ],
+    "receiver": {
+      "id": 2,
+      "person": {
+        "id": 2,
+        "firstName": "JOSEPH",
+        "lastName": "Jeejen",
+        "gender": "M",
+        "phone": "+509 41 92 1021",
+        "email": "string",
+        "locationAddress": null,
+        "textAddress": null,
+        "fullname": "JEEJEN, JOSEPH",
+        "alias": "JJ"
+      },
+      "username": "jeejen",
+      "status": "USER_ACTIVE",
+      "profile": null,
+      "created": "2022-06-14T18:41:27",
+      "creator": null,
+      "edited": "2022-06-14T18:41:27",
+      "editor": null,
+      "token": null,
+      "activatedBy": null,
+      "activatedDate": "2022-06-14T18:41:27"
+    },
+    "price": 0,
+    "weight": 0
+  },
+  "deliveryMan": {
+    "id": 2,
+    "person": {
+      "id": 2,
+      "firstName": "JOSEPH",
+      "lastName": "Jeejen",
+      "gender": "M",
+      "phone": "+509 41 92 1021",
+      "email": "string",
+      "locationAddress": null,
+      "textAddress": null,
+      "fullname": "JEEJEN, JOSEPH",
+      "alias": "JJ"
+    },
+    "username": "jeejen",
+    "status": "USER_ACTIVE",
+    "profile": null,
+    "created": "2022-06-14T18:41:27",
+    "creator": null,
+    "edited": "2022-06-14T18:41:27",
+    "editor": null,
+    "token": null,
+    "activatedBy": null,
+    "activatedDate": "2022-06-14T18:41:27"
+  },
+  "deliveryDate": "2022-06-14T20:10:19.315Z"
+}

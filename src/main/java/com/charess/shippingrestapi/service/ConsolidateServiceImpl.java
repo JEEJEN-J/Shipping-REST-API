@@ -24,10 +24,8 @@ public class ConsolidateServiceImpl implements ConsolidateService {
     public Consolidate create(Consolidate consolidate) {
         if (consolidate.getDispatches().size() > 0) {
             consolidate.getDispatches().forEach(dispatch -> {
-                if (dispatch.getId() == null) {
-                    consolidate.setWeight(consolidate.getWeight() + dispatch.getWeight());
-                    consolidate.setPrice(consolidate.getPrice() + dispatch.getPrice());
-                }
+                consolidate.setWeight(consolidate.getWeight() + dispatch.getWeight());
+                consolidate.setPrice(consolidate.getPrice() + dispatch.getPrice());
             });
             return this.consolidateRepository.save(consolidate);
         }
