@@ -36,9 +36,14 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.deleteById(id);
     }
 
-    public Category save(Category place) {
-        Audit audit = place;
+    public Category save(Category category) {
+        Audit audit = category;
         userService.inject(audit);
-        return (place == null || audit == null) ? null : categoryRepository.save(place);
+        return (category == null || audit == null) ? null : categoryRepository.save(category);
+    }
+
+    @Override
+    public Category update(Category category) {
+        return save(category);
     }
 }

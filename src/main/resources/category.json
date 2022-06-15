@@ -1,0 +1,46 @@
+{
+  "id": 0,
+  "created": "2022-06-15T17:20:54.848Z",
+  "creator": {
+    "id": 0,
+    "person": {
+      "id": 0,
+      "firstName": "string",
+      "lastName": "string",
+      "gender": "string",
+      "phone": "string",
+      "email": "string",
+      "locationAddress": {
+        "id": 0,
+        "created": "2022-06-15T17:20:54.849Z",
+        "creator": "string",
+        "edited": "2022-06-15T17:20:54.849Z",
+        "editor": "string",
+        "name": "string",
+        "nature": "string",
+        "parent": "string",
+        "fullname": "string"
+      },
+      "textAddress": "string",
+      "fullname": "string",
+      "alias": "string"
+    },
+    "username": "string",
+    "password": "string",
+    "status": "string",
+    "profile": {
+      "id": 0,
+      "role": "string",
+      "name": "string",
+      "page": "string"
+    },
+    "created": "2022-06-15T17:20:54.849Z",
+    "creator": "string",
+    "edited": "2022-06-15T17:20:54.849Z",
+    "editor": "string",
+    "token": "string",
+    "activatedBy": "string",
+    "activatedDate": "2022-06-15T17:20:54.849Z"
+  },
+  "name": "string"
+}
